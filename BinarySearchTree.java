@@ -5,24 +5,23 @@ import java.util.Comparator;
 
 public class BinarySearchTree<K, V> {
     protected BinaryTree<Association> root;
-    protected final BinaryTree<Association> EMPTY;
     protected int count;
     protected Comparator<K> ordering;
+
     public BinarySearchTree(Comparator<K> alternateOrder) {
-        this.EMPTY = new BinaryTree();
-        this.root = this.EMPTY;
+        this.root = new BinaryTree();
         this.count = 0;
         this.ordering = alternateOrder;
     }
 
     public void add(Association value) {
-        BinaryTree<Association> newNode = new BinaryTree(value, this.EMPTY, this.EMPTY);
+        BinaryTree<Association> newNode = new BinaryTree(value);
         if (this.root.isEmpty()) {
             this.root = newNode;
         } else {
             BinaryTree<Association> insertLocation = this.locate(this.root, (K) value.getKey());
             K nodeKey = (K) insertLocation.value().getKey();
-            if (this.ordering.compare(nodeKey, (K)value.getKey()) < 0) {
+            if (this.ordering.compare(nodeKey, (K) value.getKey()) < 0) {
                 insertLocation.setRight(newNode);
             } else {
                 insertLocation.setLeft(newNode);
@@ -31,7 +30,8 @@ public class BinarySearchTree<K, V> {
 
         ++this.count;
     }
-    public V search(K key){
+
+    public V search(K key) {
         if (this.root.isEmpty()) {
             return null;
         } else {
@@ -56,18 +56,19 @@ public class BinarySearchTree<K, V> {
         }
     }
 
-    public  void InOrderPrint(){
+    public void InOrderPrint() {
         InOrderSearch(root);
     }
-    private void InOrderSearch(BinaryTree<Association> actual){
+
+    private void InOrderSearch(BinaryTree<Association> actual) {
         if (actual != null) {
 
-            if (actual.left() != null) {
+            if (actual.left().isEmpty()){
                 InOrderSearch(actual.left());
             }
             System.out.print(actual.value().getValue());
 
-            if (actual.right() != null) {
+            if (actual.right().isEmpty()){
                 InOrderSearch(actual.right());
             }
 
