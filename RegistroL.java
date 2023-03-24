@@ -1,7 +1,8 @@
 
+import structure5.Association;
+
 import java.io.FileNotFoundException;
 
-import lib.BinarySearchTree;
 
 public class RegistroL {
     static BinarySearchTree<String, String[]> inglesK;

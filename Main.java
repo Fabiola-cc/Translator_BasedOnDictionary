@@ -14,22 +14,27 @@ public class Main {
 
     public static void menu() throws FileNotFoundException {
         int finish = 0;
-        while (finish != 3) {
-            System.out.println("¿Qué deseas hacer?\n1. Registrar palabras  2.Traducir oraciones  3. Salir");
+        while (finish != 4) {
+            System.out.println(
+                    "¿Qué deseas hacer?\n1. Registrar palabras  2. Recorrer diccionario en orden  3. Traducir oraciones  4. Salir");
             switch (solicitarI("")) {
                 case 1:
                     reader = new readFile("diccionario.txt//");
                     RegistroL.saveInfo(reader);
                     System.out.println("Se ha registrado la información en el archivo 'diccionario.txt'\n");
                     break;
-
                 case 2:
+                    RegistroL.inglesK.InOrderPrint();
+                    RegistroL.espanolK.InOrderPrint();
+                    RegistroL.francesK.InOrderPrint();
+                    break;
+                case 3:
                     reader = new readFile("texto.txt//");
                     Traduccion.traduce(reader);
                     System.out.println("Se ha traducido toda la información en el archivo 'texto.txt'\n");
                     break;
-                case 3:
-                    finish = 3;
+                case 4:
+                    finish = 4;
             }
         }
 

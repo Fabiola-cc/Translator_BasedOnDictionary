@@ -1,9 +1,9 @@
+import structure5.Association;
+
 import java.io.File; // Import the File class
 import java.io.FileNotFoundException; // Import this class to handle errors
 import java.util.ArrayList;
 import java.util.Scanner; // Import the Scanner class to read text files
-import lib.BinarySearchTree;
-import java.util.TreeMap;
 
 /**
  * @author
@@ -28,11 +28,13 @@ public class readFile {
         while (myReader.hasNextLine()) {
             String[] temp = myReader.nextLine().split(",");
             if (!temp[0].isBlank()) {
+
                 String key = temp[0].trim().toLowerCase();
                 String[] values = { "", "" };
                 values[0] = temp[1].trim().toLowerCase();
                 values[1] = temp[2].trim().toLowerCase();
-                total.add(key, values);
+
+                total.add(new Association<String, String[]>(key, values));
             }
         }
         myReader.close();
@@ -51,7 +53,7 @@ public class readFile {
                 String[] values = { "", "" };
                 values[0] = temp[0].trim().toLowerCase();
                 values[1] = temp[2].trim().toLowerCase();
-                total.add(key, values);
+                total.add(new Association<String, String[]>(key, values));
             }
         }
         myReader.close();
@@ -70,7 +72,7 @@ public class readFile {
                 String[] values = { "", "" };
                 values[0] = temp[0].trim().toLowerCase();
                 values[1] = temp[1].trim().toLowerCase();
-                total.add(key, values);
+                total.add(new Association<String, String[]>(key, values));
             }
         }
 
