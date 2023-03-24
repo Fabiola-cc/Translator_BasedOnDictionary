@@ -16,7 +16,7 @@ public class Main {
         int finish = 0;
         while (finish != 4) {
             System.out.println(
-                    "¿Qué deseas hacer?\n1. Registrar palabras  2. Recorrer diccionario en orden  3. Traducir oraciones  4. Salir");
+                    "¿Qué deseas hacer?\n1. Registrar palabras  2. Ver diccionario en orden  3. Traducir oraciones  4. Salir");
             switch (solicitarI("")) {
                 case 1:
                     reader = new readFile("diccionario.txt//");

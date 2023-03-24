@@ -63,12 +63,16 @@ public class BinarySearchTree<K, V> {
     private void InOrderSearch(BinaryTree<Association> actual) {
         if (actual != null) {
 
-            if (actual.left().isEmpty()){
+            if (actual.left().isEmpty()) {
                 InOrderSearch(actual.left());
             }
-            System.out.print(actual.value().getValue());
 
-            if (actual.right().isEmpty()){
+            String print_key = (String) actual.value().getKey();
+            System.out.print(print_key);
+            String print_val = actual.value().getValue().toString();
+            System.out.print(print_val);
+
+            if (actual.right().isEmpty()) {
                 InOrderSearch(actual.right());
             }
 
