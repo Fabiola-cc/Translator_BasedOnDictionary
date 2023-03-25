@@ -21,6 +21,14 @@ public class readFile {
         toRead = new File(fpath);
     }
 
+    /**
+     * Registra las palabras presentes en el archivo de texto, teniendo como
+     * principal la palabra en ingles (en primera posición)
+     * 
+     * @return arbol binario de busqueda con información recopilada - clave: palabra
+     *         en ingles
+     * @throws FileNotFoundException - archivo no encontrado
+     */
     public BinarySearchTree<String, String[]> _readEnglish() throws FileNotFoundException {
         myReader = new Scanner(toRead);
         BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
@@ -41,6 +49,14 @@ public class readFile {
         return total;
     }
 
+    /**
+     * Registra las palabras presentes en el archivo de texto, teniendo como
+     * principal la palabra en español (en segunda posición)
+     * 
+     * @return arbol binario de busqueda con información recopilada - clave: palabra
+     *         en español
+     * @throws FileNotFoundException - archivo no encontrado
+     */
     public BinarySearchTree<String, String[]> _readSpanish() throws FileNotFoundException {
         myReader = new Scanner(toRead);
         BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
@@ -61,6 +77,14 @@ public class readFile {
         return total;
     }
 
+    /**
+     * Registra las palabras presentes en el archivo de texto, teniendo como
+     * principal la palabra en frances (en tercera posición)
+     * 
+     * @return arbol binario de busqueda con información recopilada - clave: palabra
+     *         en frances
+     * @throws FileNotFoundException - archivo no encontrado
+     */
     public BinarySearchTree<String, String[]> _readFrench() throws FileNotFoundException {
         myReader = new Scanner(toRead);
         BinarySearchTree<String, String[]> total = new BinarySearchTree<>(new WordComparator());
@@ -80,6 +104,12 @@ public class readFile {
         return total;
     }
 
+    /**
+     * Registra y divide las palabras que se desean traducir
+     * 
+     * @return ArrayList con frases a traducir, separadas por palabra
+     * @throws FileNotFoundException - archivo no encontrado
+     */
     public ArrayList<String[]> Traduce() throws FileNotFoundException {
         myReader = new Scanner(toRead);
         ArrayList<String[]> frases = new ArrayList<>();
