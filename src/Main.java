@@ -19,7 +19,7 @@ public class Main {
                     "\n¿Qué deseas hacer?\n1. Registrar palabras  2. Ver diccionario en orden  3. Traducir oraciones  4. Salir");
             switch (solicitarI("")) {
                 case 1:
-                    reader = new readFile("diccionario.txt//");
+                    reader = new readFile("src/diccionario.txt");
                     RegistroL.saveInfo(reader);
                     System.out.println("Se ha registrado la información en el archivo 'diccionario.txt'\n");
                     break;
@@ -33,7 +33,7 @@ public class Main {
                 case 3:
                     System.out.println(
                             "Se leera la información en el archivo 'texto.txt' asegurate de que no tenga elementos extra como puntos para no interferir con el proceso de traducción.");
-                    reader = new readFile("texto.txt//");
+                    reader = new readFile("src/texto.txt");
                     Traduccion.traduce(reader);
                     System.out.println("Se ha traducido toda la información en el archivo 'texto.txt'\n");
                     break;
