@@ -1,5 +1,3 @@
-package src;
-
 import structure5.BinaryTree;
 import structure5.Association;
 

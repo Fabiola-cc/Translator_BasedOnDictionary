@@ -1,5 +1,3 @@
-package src;
-
 import structure5.Association;
 
 import java.io.File; // Import the File class
