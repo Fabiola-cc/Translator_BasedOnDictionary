@@ -1,25 +1,28 @@
+package src;
+
 import structure5.BinaryTree;
 import structure5.Association;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class BinarySearchTree<K, V> {
-    protected BinaryTree<Association> root;
+    protected BinaryTree<Association<K, V>> root;
     protected int count;
     protected Comparator<K> ordering;
 
     public BinarySearchTree(Comparator<K> alternateOrder) {
-        this.root = new BinaryTree();
+        this.root = new BinaryTree<Association<K, V>>();
         this.count = 0;
         this.ordering = alternateOrder;
     }
 
-    public void add(Association value) {
-        BinaryTree<Association> newNode = new BinaryTree(value);
+    public void add(Association<K, V> value) {
+        BinaryTree<Association<K, V>> newNode = new BinaryTree<Association<K, V>>(value);
         if (this.root.isEmpty()) {
             this.root = newNode;
         } else {
-            BinaryTree<Association> insertLocation = this.locate(this.root, (K) value.getKey());
+            BinaryTree<Association<K, V>> insertLocation = this.locate(this.root, (K) value.getKey());
             K nodeKey = (K) insertLocation.value().getKey();
             if (this.ordering.compare(nodeKey, (K) value.getKey()) < 0) {
                 insertLocation.setRight(newNode);
@@ -35,17 +38,17 @@ public class BinarySearchTree<K, V> {
         if (this.root.isEmpty()) {
             return null;
         } else {
-            BinaryTree<Association> possibleLocation = this.locate(this.root, key);
+            BinaryTree<Association<K, V>> possibleLocation = this.locate(this.root, key);
             return key.equals(possibleLocation.value().getKey()) ? (V) possibleLocation.value().getValue() : null;
         }
     }
 
-    protected BinaryTree<Association> locate(BinaryTree<Association> root, K key) {
+    protected BinaryTree<Association<K, V>> locate(BinaryTree<Association<K, V>> root, K key) {
         K rootKey = (K) root.value().getKey();
         if (rootKey.equals(key)) {
             return root;
         } else {
-            BinaryTree child;
+            BinaryTree<Association<K, V>> child;
             if (this.ordering.compare(rootKey, key) < 0) {
                 child = root.right();
             } else {
@@ -60,23 +63,19 @@ public class BinarySearchTree<K, V> {
         InOrderSearch(root);
     }
 
-    private void InOrderSearch(BinaryTree<Association> actual) {
-        if (actual != null) {
-
-            if (actual.left().isEmpty()) {
-                InOrderSearch(actual.left());
+    private void InOrderSearch(BinaryTree<Association<K, V>> actual) {
+        Iterator<Association<K, V>> iterador = actual.inorderIterator();
+        System.out.println("\nIn order process...");
+        // Iterar sobre los elementos del árbol y mostrarlos
+        while (iterador.hasNext()) {
+            Association<K, V> elemento = iterador.next();
+            System.out.print("\n" + elemento.getKey() + "\t");
+            for (String valor : (String[]) elemento.getValue()) {
+                System.out.print(valor + "\t");
             }
-
-            String print_key = (String) actual.value().getKey();
-            System.out.print(print_key);
-            String print_val = actual.value().getValue().toString();
-            System.out.print(print_val);
-
-            if (actual.right().isEmpty()) {
-                InOrderSearch(actual.right());
-            }
-
         }
+        System.out.println("\n*** Se ha concluido el proceso ***");
+
     }
 
 }

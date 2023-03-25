@@ -1,3 +1,5 @@
+package src;
+
 import structure5.Association;
 
 import java.io.File; // Import the File class
@@ -28,11 +30,11 @@ public class readFile {
         while (myReader.hasNextLine()) {
             String[] temp = myReader.nextLine().split(",");
             if (!temp[0].isBlank()) {
-                String key = temp[0].trim().toLowerCase().replaceAll(".", "");
+                String key = temp[0].trim().toLowerCase();
                 String[] values = { "", "" };
-                values[0] = temp[1].trim().toLowerCase().replaceAll(".", "");
-                values[1] = temp[2].trim().toLowerCase().replaceAll(".", "");
-                Association use = new Association<String, String[]>(key, values);
+                values[0] = temp[1].trim().toLowerCase();
+                values[1] = temp[2].trim().toLowerCase();
+                Association<String, String[]> use = new Association<String, String[]>(key, values);
                 total.add(use);
             }
         }
@@ -48,11 +50,11 @@ public class readFile {
         while (myReader.hasNextLine()) {
             String[] temp = myReader.nextLine().split(",");
             if (!temp[0].isBlank()) {
-                String key = temp[1].trim().toLowerCase().replaceAll(".", "");
+                String key = temp[1].trim().toLowerCase();
                 String[] values = { "", "" };
-                values[0] = temp[0].trim().toLowerCase().replaceAll(".", "");
-                values[1] = temp[2].trim().toLowerCase().replaceAll(".", "");
-                Association use = new Association<String, String[]>(key, values);
+                values[0] = temp[0].trim().toLowerCase();
+                values[1] = temp[2].trim().toLowerCase();
+                Association<String, String[]> use = new Association<String, String[]>(key, values);
                 total.add(use);
             }
         }
@@ -68,11 +70,11 @@ public class readFile {
         while (myReader.hasNextLine()) {
             String[] temp = myReader.nextLine().split(",");
             if (!temp[0].isBlank()) {
-                String key = temp[2].trim().toLowerCase().replaceAll(".", "");
+                String key = temp[2].trim().toLowerCase();
                 String[] values = { "", "" };
-                values[0] = temp[0].trim().toLowerCase().replaceAll(".", "");
-                values[1] = temp[1].trim().toLowerCase().replaceAll(".", "");
-                Association use = new Association<String, String[]>(key, values);
+                values[0] = temp[0].trim().toLowerCase();
+                values[1] = temp[1].trim().toLowerCase();
+                Association<String, String[]> use = new Association<String, String[]>(key, values);
                 total.add(use);
             }
         }

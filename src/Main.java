@@ -1,3 +1,5 @@
+package src;
+
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 
@@ -16,7 +18,7 @@ public class Main {
         int finish = 0;
         while (finish != 4) {
             System.out.println(
-                    "¿Qué deseas hacer?\n1. Registrar palabras  2. Ver diccionario en orden  3. Traducir oraciones  4. Salir");
+                    "\n¿Qué deseas hacer?\n1. Registrar palabras  2. Ver diccionario en orden  3. Traducir oraciones  4. Salir");
             switch (solicitarI("")) {
                 case 1:
                     reader = new readFile("diccionario.txt//");
@@ -25,10 +27,14 @@ public class Main {
                     break;
                 case 2:
                     RegistroL.inglesK.InOrderPrint();
+                    System.out.println();
                     RegistroL.espanolK.InOrderPrint();
+                    System.out.println();
                     RegistroL.francesK.InOrderPrint();
                     break;
                 case 3:
+                    System.out.println(
+                            "Se leera la información en el archivo 'texto.txt' asegurate de que no tenga elementos extra como puntos para no interferir con el proceso de traducción.");
                     reader = new readFile("texto.txt//");
                     Traduccion.traduce(reader);
                     System.out.println("Se ha traducido toda la información en el archivo 'texto.txt'\n");
